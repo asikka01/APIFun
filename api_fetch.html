@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cat Facts API</title>
+        <style>
+                body {
+                        font-family: Arial, sans-serif;
+                        padding: 20px;
+                        background-color: #f0f0f0;
+                }
+
+                .fact-container {
+                        background: #fff;
+                        padding: 20px;
+                        border-radius: 10px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+
+                h2 {
+                        color: #333;
+                }
+
+                .fact {
+                        font-size: 1.2em;
+                        margin: 10px 0;
+                }
+        </style>
+</head>
+<body>
+        <h2>Random Cat Fact</h2>
+        <div class="fact-container">
+                <p class="fact">Loading...</p>
+        </div>
+
+        <h3>About the API</h3>
+        <p>This is the Cat Facts API. It provides random interesting facts about cats.</p>
+        <p><strong>Source:</strong> <a href="https://catfact.ninja/" target="_blank">Cat Fact Ninja</a></p>
+        <p><strong>Parameters:</strong> The API endpoint is a simple GET request without additional parameters.</p>
+        <p><strong>Applications:</strong></p>
+        <ul>
+                <li>Could be used in a trivia game about cats.</li>
+                <li>Can be integrated into a pet-related blog or website to display fun cat facts.</li>
+        </ul>
+
+        <script>
+                const factContainer = document.querySelector('.fact');
+
+                fetch('https://catfact.ninja/fact')
+                        .then(response => response.json())
+                        .then(data => {
+                                factContainer.textContent = data.fact;
+                })
+                .catch(error => {
+                        factContainer.textContent = 'Failed to load fact.';
+                        console.error('Error fetching data:', error);
+                });
+    </script>
+</body>
+</html>
